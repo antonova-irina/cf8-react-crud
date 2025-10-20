@@ -1,4 +1,4 @@
-import type {Product} from "@/schemas/products.ts";
+import type {Product} from "./../../schemas/products.ts";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const tenantId= import.meta.env.VITE_TENANT_ID;
@@ -6,10 +6,10 @@ const tenantId= import.meta.env.VITE_TENANT_ID;
 
 export async function getProducts(): Promise<Product[]> {
     const res = await fetch(`${API_URL}/tenants/${tenantId}/products/`,
-        //   {
-        //   method: "GET",
-        //   headers: {"Content-Type": "application/json"},
-        // }
+          {
+          method: "GET",
+          headers: {"Content-Type": "application/json"},
+        }
     );
     if (!res.ok) throw new Error("Failed to fetch products");
     return await res.json();
